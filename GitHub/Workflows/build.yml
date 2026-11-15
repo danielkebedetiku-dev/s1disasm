@@ -1,0 +1,16 @@
+name: Build ROM
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Run build script
+        run: .\build.bat
+      - name: Upload ROM
+        uses: actions/upload-artifact@v4
+        with:
+          name: Sonic-ROM
+          path: "*.bin
